@@ -1,0 +1,20 @@
+{
+  "name": "meanonlinepollingsystem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bmshamsnahid/Polling-Applciation.git"
+  },
+  "author": "B M Shams Nahid <b.m.shamsnahid@gmail.com> (https://medium.com/@bmshamsnahid)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bmshamsnahid/Polling-Applciation/issues"
+  },
+  "homepage": "https://github.com/bmshamsnahid/Polling-Applciation#readme"
+}
