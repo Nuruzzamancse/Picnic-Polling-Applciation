@@ -1,3 +1,23 @@
-<div class="pagecontainer">
-  <h1>Welcome to the Admin Login</h1>
+<div class="container pagecontainer">
+
+  <form [formGroup]="adminLoginForm" (ngSubmit)="loginAdmin(adminLoginForm.value)" class="form-signin" novalidate autocomplete="off">
+    <h2>Administrator Signin</h2>
+    <label for="inputUser" class="sr-only">Username</label>
+    <input type="text" id="inputUser" class="form-control" [formControl]="adminUsername" placeholder="Username" autofocus>
+    <div class="text-danger" *ngIf="adminLoginForm.get('adminUsername').dirty && adminLoginForm.get('adminUsername').invalid">
+      Please enter username
+    </div>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" [formControl]="adminPassword" placeholder="Password">
+    <div class="text-danger" *ngIf="adminLoginForm.get('adminPassword').dirty && adminLoginForm.get('adminPassword').invalid">
+      Please enter password
+    </div>
+    <br><br>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="adminLoginForm.invalid" >Sign in</button>
+    <br>
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-xs-6"></div>
+      <div class="col-md-6 col-sm-6 col-xs-6" style="text-align: right"><a [routerLink]="['/admin-register']">Register</a></div>
+    </div>
+  </form>
 </div>
