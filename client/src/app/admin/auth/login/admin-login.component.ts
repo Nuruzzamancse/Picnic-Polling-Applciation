@@ -19,7 +19,7 @@ export class AdminLoginComponent implements OnInit {
   });
 
   constructor(private fb: FormBuilder,
-              private router: Router,) {}
+              private router: Router) {}
 
   ngOnInit() {}
 

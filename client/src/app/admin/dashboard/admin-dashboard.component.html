@@ -1,3 +1,66 @@
 <div class="pagecontainer">
-  <h1>Welcome to the Admin Dashboard</h1>
+
+  <!--start of both table row section-->
+  <div class="row">
+
+    <!--start of col-8 section-->
+    <div class="col-sm-8 text-center">
+      <h2>Student List</h2>
+      <div>
+        <div class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Roll</th>
+              <th>Vote Available</th>
+              <th>Approval Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of students">
+              <td>{{student.studentName}}</td>
+              <td>{{student.studentRoll}}</td>
+              <td>{{student.isVoteAvailable}}</td>
+              <td>{{student.isApproved}}</td>
+            </tr>
+          </tbody>
+        </div>
+      </div>
+    </div>
+    <!--end of col-8 section-->
+
+    <!--start of col-4 section-->
+    <div class="col-sm-4 text-center">
+      <h2>Place List</h2>
+      <div>
+        <div class="table table-striped">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Votes</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let palce of places">
+            <td>{{place.placeName}}</td>
+            <td>{{place.placeVotes}}</td>
+          </tr>
+          </tbody>
+        </div>
+      </div>
+    </div>
+    <!--end of col-4 section-->
+
+  </div>
+  <!--end of both table row section-->
+
+  <!--start of student select modal section-->
+  <!--end of student select modal section-->
+
+  <!--start of place select modal-->
+  <!--end of place select modal-->
+
+  <!--start of create place modal section-->
+  <!--end of create place modal section-->
+
 </div>
