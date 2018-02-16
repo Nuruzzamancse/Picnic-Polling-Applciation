@@ -8,6 +8,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {RouterModule} from "@angular/router";
 import {StudentModule} from "./student/student.module";
+import {AdminModule} from "./admin/admin.module";
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import {StudentModule} from "./student/student.module";
     ReactiveFormsModule,
     HttpModule,
     StudentModule,
+    AdminModule,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
