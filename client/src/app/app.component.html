@@ -11,18 +11,20 @@
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a routerLink="" routerLinkActive="active">Menu 01</a></li>
+
+        <li><a routerLink="profile" routerLinkActive="active">Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a routerLink="" routerLinkActive="active">Menu 02</a>
+          <a routerLink="login" routerLinkActive="active">Log In</a>
         </li>
         <li>
           <ul class="menu">
             <li>
+              Welcome Name
               <ul>
-                <li routerLink="">Menu 03</li>
-                <li routerLink="">Menu 04</li>
+                <li routerLink="contact">Dashboard</li>
+                <li routerLink="logout">Logout</li>
               </ul>
             </li>
           </ul>
@@ -31,7 +33,6 @@
     </div>
   </div>
 </nav>
-
 <router-outlet></router-outlet>
 
 <footer class="footer">

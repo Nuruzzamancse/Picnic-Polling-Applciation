@@ -1,3 +1,12 @@
 <div class="pagecontainer">
-  <h1> Welcome to the home component. </h1>
+  <h1>
+    {{title}}
+  </h1>
+  <fusioncharts
+    [id]="id"
+    [width]="width"
+    [height]="height"
+    [type]="type"
+    [dataFormat]="dataFormat"
+    [dataSource]="dataSource"></fusioncharts>
 </div>
