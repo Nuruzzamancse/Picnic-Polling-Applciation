@@ -1,8 +1,8 @@
 export class Student {
   studentName: string;
   studentRoll: number;
-  studentPassword: string;
   studentEmail: string;
+  studentPassword: string;
   isVoteAvailable: boolean;
   isApproved: boolean;
 }
