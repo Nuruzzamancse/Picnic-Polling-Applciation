@@ -1,3 +1,39 @@
-<div class="pagecontainer">
-  <h1>Welcome to the Student Login</h1>
+<div class="container pagecontainer">
+  <!--start student login form-->
+  <form [formGroup]="studentLoginForm" (ngSubmit)="loginStudent(studentLoginForm.value)" class="form-horizontal form-signin" novalidate autocomplete="off">
+
+    <!--start email input group-->
+    <div class="form-group" [ngClass]="{'has-error': studentLoginForm.get('studentEmail').invalid && studentLoginForm.get('studentEmail').dirty}">
+      <div class="input-group col-sm-10">
+        <div class="input-group-addon">@</div>
+        <input type="text" id="studentEmail" class="form-control" [formControl]="studentEmail" placeholder="Email">
+      </div>
+      <div class="text-danger" *ngIf="studentLoginForm.get('studentEmail').dirty && studentLoginForm.get('studentEmail').errors">
+        <span class="col-sm-2"></span>
+        <span class="col-sm-10" *ngIf="studentLoginForm.get('studentEmail').invalid">
+          Enter a valid email
+        </span>
+      </div>
+    </div>
+    <!--end email input group-->
+
+    <!--start password input group-->
+    <div class="form-group" [ngClass]="{'has-error': studentLoginForm.get('studentPassword').invalid && studentLoginForm.get('studentPassword').dirty}">
+      <div class="input-group col-sm-10">
+        <div class="input-group-addon"><i class="glyphicon glyphicon glyphicon-asterisk"></i></div>
+        <input type="password" id="studentPassword" class="form-control" [formControl]="studentPassword" placeholder="Password">
+      </div>
+      <div class="text-danger" *ngIf="studentLoginForm.get('studentPassword').dirty && studentLoginForm.get('studentPassword').errors">
+        <span class="col-sm-2"></span>
+        <span class="col-sm-10" *ngIf="studentLoginForm.get('studentPassword').invalid">
+          Enter a valid password
+        </span>
+      </div>
+    </div>
+    <!--end password input group-->
+    <br>
+    <button class="btn btn-primary text-center" id="submit" [disabled]="studentLoginForm.invalid">Sign in</button>
+
+  </form>
+  <!--end student login form-->
 </div>

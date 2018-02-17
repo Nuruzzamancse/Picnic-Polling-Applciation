@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   templateUrl: './student-login.component.html',
@@ -9,7 +9,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class StudentLoginComponent implements OnInit {
 
-  studentEmail = new FormControl('', [Validators.required]);
+  studentEmail = new FormControl('', [Validators.email]);
   studentPassword = new FormControl('', [Validators.required]);
 
   constructor(private formBuilder: FormBuilder) {}
