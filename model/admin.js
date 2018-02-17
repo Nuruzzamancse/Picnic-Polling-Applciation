@@ -9,7 +9,7 @@ const AdminSchema = new Schema({
 });
 
 // Pre-save of user's hash adminPassword to database
-UserSchema.pre('save', function (next) {
+AdminSchema.pre('save', function (next) {
     const users = this,
         SALT_FACTOR = 5;
 
@@ -27,7 +27,7 @@ UserSchema.pre('save', function (next) {
 });
 
 // Method to compare adminPassword for login
-UserSchema.methods.comparePassword = function (candidatePassword, cb) {
+AdminSchema.methods.comparePassword = function (candidatePassword, cb) {
     bcrypt.compare(candidatePassword, this.adminPassword, (err, isMatch) => {
         if (err) { return cb(err); }
 
