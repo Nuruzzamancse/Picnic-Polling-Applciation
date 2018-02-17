@@ -35,7 +35,7 @@ export class StudentRegisterComponent implements OnInit {
         studentPassword: this.studentPassword,
         studentRetypePassword: this.studentRetypePassword
       }, {
-        validator: comparePassword
+        valida: comparePassword
       })
     });
   }
