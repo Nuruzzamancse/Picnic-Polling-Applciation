@@ -10,11 +10,11 @@ import {Router} from "@angular/router";
 })
 export class AdminLoginComponent implements OnInit {
 
-  adminUsername = new FormControl('', [Validators.required]);
+  adminEmail = new FormControl('', [Validators.required, Validators.email]);
   adminPassword = new FormControl('', [Validators.required]);
 
   adminLoginForm: FormGroup = this.fb.group({
-    adminUsername: this.adminUsername,
+    adminEmail: this.adminEmail,
     adminPassword: this.adminPassword
   });
 
