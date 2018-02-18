@@ -9,7 +9,7 @@
 
     <!--start student name section-->
     <div class="form-group" [ngClass]="{'has-error': studentRegistrationForm.get('studentName').invalid &&  studentRegistrationForm.get('studentName').dirty}">
-      <label for="studentName" class="col-sm-2 control-label">Student Name <sup>*</sup></label>
+      <label for="studentName" class="col-sm-2 control-label">Name <sup>*</sup></label>
       <div class="input-group col-sm-10">
         <div class="input-group-addon"><i class="glyphicon glyphicon-font"></i></div>
         <input type="text" id="studentName" class="form-control" [formControl]="studentName" placeholder="Student Name">
@@ -25,7 +25,7 @@
 
     <!--start student roll section-->
     <div class="form-group" [ngClass]="{'has-error': studentRegistrationForm.get('studentRoll').invalid && studentRegistrationForm.get('studentRoll').dirty}">
-      <label for="studentRoll" class="col-sm-2 control-label">Student Roll <sup>*</sup></label>
+      <label for="studentRoll" class="col-sm-2 control-label">Roll <sup>*</sup></label>
       <div class="input-group col-sm-10">
         <div class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order"></i></div>
         <input type="text" id="studentRoll" class="form-control" [formControl]="studentRoll" placeholder="Student Roll">
@@ -41,7 +41,7 @@
 
     <!--start student email section-->
     <div class="form-group" [ngClass]="{'has-error': studentRegistrationForm.get('studentEmail').invalid && studentRegistrationForm.get('studentEmail').dirty}">
-      <label for="studentEmail" class="col-sm-2 control-label">Student Email <sup>*</sup></label>
+      <label for="studentEmail" class="col-sm-2 control-label">Email <sup>*</sup></label>
       <div class="input-group col-sm-10">
         <div class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></div>
         <input type="text" id="studentEmail" class="form-control" [formControl]="studentEmail" placeholder="Student Email">

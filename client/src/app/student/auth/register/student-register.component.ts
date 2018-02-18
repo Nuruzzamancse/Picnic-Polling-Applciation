@@ -1,5 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Student} from "../../student";
+import {StudentService} from "../../student.service";
 
 function comparePassword(c: AbstractControl): {[key: string]: boolean} | null {
   let studentPasswordControl = c.get('studentPassword');
@@ -25,7 +27,10 @@ export class StudentRegisterComponent implements OnInit {
   studentPassword = new FormControl('', [Validators.required, Validators.minLength(6)]);
   studentRetypePassword = new FormControl('', [Validators.required]);
 
-  constructor(private  formBuilder: FormBuilder) {}
+  student: Student;
+
+  constructor(private formBuilder: FormBuilder,
+              private studentService: StudentService) {}
   ngOnInit() {
     this.studentRegistrationForm = this.formBuilder.group({
       studentName: this.studentName,
@@ -35,13 +40,21 @@ export class StudentRegisterComponent implements OnInit {
         studentPassword: this.studentPassword,
         studentRetypePassword: this.studentRetypePassword
       }, {
-        valida: comparePassword
+        validator: comparePassword
       })
     });
   }
 
   registerStudent(formData) {
     console.log(formData);
+    this.student = new Student();
+    this.student.studentName = formData.studentName;
+    this.student.studentRoll = formData.studentRoll;
+    this.student.studentEmail = formData.studentEmail;
+    this.student.studentPassword = formData.studentPasswordGroup.studentPassword;
+    this.studentService.createStudent(this.student).subscribe((data) => {
+      console.log(data);
+    });
   }
 
 
