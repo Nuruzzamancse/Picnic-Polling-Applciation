@@ -9,9 +9,11 @@ var express = require('express'),
 
 var config = require('./config');
 
-var adminRoutes = require('./route/admin'),
-    placeRoutes = require('./route/place'),
-    studentRoutes = require('./route/student');
+var placeRoutes = require('./route/place'),
+    adminRoutes = require('./route/admin'),
+    // adminAuthRoutes = require('./route/admin'),
+    studentRoutes = require('./route/student'),
+    studentAuthRoutes = require('./route/studentAuth');
 
 var port = process.env.PORT || config.serverPort;
 
@@ -36,6 +38,7 @@ app.use(cors());
 app.use('/admin', adminRoutes);
 app.use('/place', placeRoutes);
 app.use('/student', studentRoutes);
+app.use('/student-auth', studentAuthRoutes);
 
 app.listen(port);
 console.log('App is running in port: ' + port);
