@@ -7,6 +7,9 @@ import {StudentDashboardComponent} from "./dashboard/student-dashboard.component
 import {StudentLoginComponent} from "./auth/login/student-login.component";
 import {StudentRegisterComponent} from "./auth/register/student-register.component";
 import {StudentLogoutComponent} from "./auth/student-logout.component";
+import {ToastrService} from "../common/toastr.service";
+import {AuthService} from "../common/auth.service";
+import {AuthGuardService} from "../common/auth-guard.service";
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import {StudentLogoutComponent} from "./auth/student-logout.component";
     ])
   ],
   providers: [
-    StudentService
+    StudentService,
+    ToastrService,
+    AuthService,
+    AuthGuardService
   ]
 })
 export class StudentModule {}

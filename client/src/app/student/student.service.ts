@@ -9,6 +9,7 @@ import {Student} from "./student";
 
 @Injectable()
 export class StudentService {
+
   constructor(private http: Http) {}
 
   createStudent(student: Student) {

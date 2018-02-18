@@ -13,6 +13,9 @@ import {HttpModule} from "@angular/http";
 import {RouterModule} from "@angular/router";
 import {StudentModule} from "./student/student.module";
 import {AdminModule} from "./admin/admin.module";
+import {ToastrService} from "./common/toastr.service";
+import {AuthService} from "./common/auth.service";
+import {AuthGuardService} from "./common/auth-guard.service";
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 
@@ -35,7 +38,11 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
       { path: '**', redirectTo: 'home', pathMatch: 'full' }
     ])
   ],
-  providers: [],
+  providers: [
+    ToastrService,
+    AuthService,
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
