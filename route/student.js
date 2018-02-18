@@ -3,11 +3,12 @@ var express = require('express'),
     student = require('../model/student'),
     studentController = require('../controller/student'),
     studentAuthController = require('../controller/studentAuth');
+    adminAuthController = require('../controller/adminAuth');
 
 router.post('/', studentController.createStudent);
-router.get('/', studentController.getAllStudents);
+router.get('/', adminAuthController.adminAuthenticate, studentController.getAllStudents);
 router.get('/:id', studentAuthController.studentAuthenticate, studentController.getStudent);
-router.patch('/:id', studentController.updateStudent);
-router.delete('/:id', studentController.deleteStudent);
+router.patch('/:id', studentAuthController.studentAuthenticate, studentController.updateStudent);
+router.delete('/:id', adminAuthController.adminAuthenticate, studentController.deleteStudent);
 
 module.exports = router;

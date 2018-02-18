@@ -7,11 +7,12 @@ var express = require('express'),
     cors = require('cors'),
     path = require('path');
 
-var config = require('./config');
+var config = require('./config'),
+    adminAuthController = require('./controller/adminAuth');
 
 var placeRoutes = require('./route/place'),
     adminRoutes = require('./route/admin'),
-    // adminAuthRoutes = require('./route/admin'),
+    adminAuthRoutes = require('./route/adminAuth'),
     studentRoutes = require('./route/student'),
     studentAuthRoutes = require('./route/studentAuth');
 
@@ -35,8 +36,9 @@ app.use(morgan('dev'));
 
 app.use(cors());
 
+app.use('/place', adminAuthController.adminAuthenticate, placeRoutes);
 app.use('/admin', adminRoutes);
-app.use('/place', placeRoutes);
+app.use('/admin-auth', adminAuthRoutes);
 app.use('/student', studentRoutes);
 app.use('/student-auth', studentAuthRoutes);
 
