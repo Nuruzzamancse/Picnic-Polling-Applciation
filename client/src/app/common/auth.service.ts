@@ -10,7 +10,7 @@ import 'rxjs/add/observable/throw';
 export class AuthService {
   constructor(private http: Http) {}
 
-  isLoggedIn(): boolean {
+  isStudentLoggedIn(): boolean {
     try {
       if (localStorage.getItem('currentStudent')) {
         return true;
@@ -21,7 +21,7 @@ export class AuthService {
     return false;
   }
 
-  logout(): void {
+  studentLogout(): void {
     localStorage.removeItem('currentItem');
   }
 

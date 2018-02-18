@@ -15,12 +15,12 @@
         <li><a routerLink="profile" routerLinkActive="active">Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="!authService.isLoggedIn()">
+        <li *ngIf="!authService.isStudentLoggedIn()">
           <a routerLink="login" routerLinkActive="active">Log In</a>
         </li>
         <li>
           <ul class="menu">
-            <li *ngIf="authService.isLoggedIn()">
+            <li *ngIf="authService.isStudentLoggedIn()">
               Welcome Name
               <ul>
                 <li routerLink="contact">Dashboard</li>
