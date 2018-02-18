@@ -1,5 +1,4 @@
-var mongoose = require('mongoose'),
-    Student = require('../model/student');
+var Student = require('../model/student');
 
 var createStudent = (req, res, next) => {
     var studentName = req.body.studentName,

@@ -1,5 +1,4 @@
-var mongoose = require('mongoose'),
-    Place = require('../model/place');
+var Place = require('../model/place');
 
 var createPlace = (req, res, next) => {
 
