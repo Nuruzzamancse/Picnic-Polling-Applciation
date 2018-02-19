@@ -61,7 +61,8 @@ export class AuthService {
     return this.http.post(`http://localhost:8080/admin-auth/login`, JSON.stringify(admin), options)
       .map((response: Response) => {
         if (response.json().success) {
-          localStorage.setItem('currentAdmin', response.json().data);
+          console.log(response.json());
+          localStorage.setItem('currentAdmin', JSON.stringify(response.json()));
         }
         return response.json();
       })

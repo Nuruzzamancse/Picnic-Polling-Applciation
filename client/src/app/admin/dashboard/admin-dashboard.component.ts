@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Student} from "../../student/student";
 import {Place} from "../../place/place";
+import {AdminService} from "../admin.service";
 
 @Component({
   templateUrl: './admin-dashboard.component.html',
@@ -15,7 +16,7 @@ export class AdminDashboardComponent implements OnInit {
   student: Student;
   place: Place;
 
-  constructor() {}
+  constructor(private adminService: AdminService) {}
   ngOnInit() {
     this.student = new Student();
     this.student.studentName = 'student 01 name';
@@ -31,6 +32,12 @@ export class AdminDashboardComponent implements OnInit {
     this.place.placeDescription = 'place Description 01';
     this.place.placeVotes = 10;
     for (let index=0; index<5; index++) this.places.push(this.place);
+    this.getAllPlaces();
+  }
 
+  getAllPlaces() {
+    this.adminService.getPlaces().subscribe((data) => {
+      this.places = data.data;
+    });
   }
 }
