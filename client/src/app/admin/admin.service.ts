@@ -39,6 +39,28 @@ export class AdminService {
       .catch(this.handleError);
   }
 
+  updatePlace(place: Place) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', `${this.jwtToken}`);
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.patch(`http://localhost:8080/place/${place._id}`, JSON.stringify(place), options)
+      .map((response: Response) => response.json())
+      .catch(this.handleError);
+  }
+
+  deletePlace(place: Place) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', `${this.jwtToken}`);
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.delete(`http://localhost:8080/place/${place._id}`, options)
+      .map((response: Response) => response.json())
+      .catch(this.handleError);
+  }
+
   private handleError(error?: Response) {
     if (error) {
       console.log('Error in Contact Service: ' + error);

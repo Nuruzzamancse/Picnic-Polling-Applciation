@@ -21,13 +21,16 @@ var adminLogin = (req, res, next) => {
 };
 
 var adminAuthenticate = (req, res, next) => {
-
+    console.log('Admin Auth');
     var token = req.body.token || req.query.token || req.headers['authorization'];
     if (token) {
         jwt.verify(token, config.secret, (err, decoded) => {
             if (err) return res.status(400).json({ success: false, message: 'Fatal server error: ' + err });
             req.decoded = decoded;
-            if (req.decoded._doc.adminEmail == null) return res.status(201).json({ success: false, message: 'Please login as Admin' });
+            if (req.decoded._doc.adminEmail == null) {
+                console.log('No admin previlage');
+                return res.status(201).json({ success: false, message: 'Please login as Admin' });
+            }
             next();
         });
     } else {

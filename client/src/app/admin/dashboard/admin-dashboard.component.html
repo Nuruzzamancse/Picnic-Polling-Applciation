@@ -42,7 +42,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let place of places" data-toggle="modal" data-target="#selectPlaceModal" (click)="onClickPlaceTable(place)">
+          <tr *ngFor="let place of places; let i = index;" data-toggle="modal" data-target="#selectPlaceModal" (click)="onClickPlaceTable(place)">
             <td>{{place.placeName}}</td>
             <td>{{place.placeVotes}}</td>
           </tr>

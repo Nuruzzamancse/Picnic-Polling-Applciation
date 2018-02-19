@@ -4,6 +4,7 @@ import {Place} from "../../place/place";
 import {AdminService} from "../admin.service";
 import {ToastrService} from "../../common/toastr.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import index from "@angular/cli/lib/cli";
 
 @Component({
   templateUrl: './admin-dashboard.component.html',
@@ -82,9 +83,32 @@ export class AdminDashboardComponent implements OnInit {
 
   onClickUpdatePlace() {
     console.log('Update Place');
+    console.log(this.currentPlace);
+    this.adminService.updatePlace(this.currentPlace).subscribe((data) => {
+      if (data.success) {
+        this.toastrService.success('Successfully created the place.');
+      } else {
+        if (data.message) {
+          this.toastrService.warning(data.message);
+        } else {
+          this.toastrService.error('Error in updating the place.');
+        }
+      }
+    });
   }
 
   onClickDeleetPlace() {
-    console.log('Delete Place');
+    this.adminService.deletePlace(this.currentPlace).subscribe((data) => {
+      if (data.success) {
+        this.places = this.places.filter(place => place._id !=  this.currentPlace._id);
+        this.toastrService.success('Successfully removed the place.');
+      } else {
+        if (data.message) {
+          this.toastrService.warning(data.message);
+        } else {
+          this.toastrService.error('Error in deleting the place.');
+        }
+      }
+    });
   }
 }
