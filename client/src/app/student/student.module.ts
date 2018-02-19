@@ -9,7 +9,8 @@ import {StudentRegisterComponent} from "./auth/register/student-register.compone
 import {StudentLogoutComponent} from "./auth/student-logout.component";
 import {ToastrService} from "../common/toastr.service";
 import {AuthService} from "../common/auth.service";
-import {AuthGuardService} from "../common/auth-guard.service";
+import {StudentAuthGuardService} from "../common/student-auth-guard.service";
+import {AdminAuthGuardService} from "../common/admin-auth-guard.service";
 
 @NgModule({
   declarations: [
@@ -23,17 +24,14 @@ import {AuthGuardService} from "../common/auth-guard.service";
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild([
-      { path: 'student-dashboard', component: StudentDashboardComponent },
+      { path: 'student-dashboard', canActivate:[ StudentAuthGuardService ], component: StudentDashboardComponent },
       { path: 'student-login', component: StudentLoginComponent },
       { path: 'student-register', component: StudentRegisterComponent },
-      { path: 'student-logout', component: StudentLogoutComponent }
+      { path: 'student-logout', canActivate:[ StudentAuthGuardService ], component: StudentLogoutComponent }
     ])
   ],
   providers: [
-    StudentService,
-    ToastrService,
-    AuthService,
-    AuthGuardService
+    StudentService
   ]
 })
 export class StudentModule {}

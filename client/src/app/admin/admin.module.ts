@@ -7,6 +7,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {AdminService} from "./admin.service";
+import {AdminAuthGuardService} from "../common/admin-auth-guard.service";
 
 @NgModule({
   declarations: [
@@ -20,10 +21,10 @@ import {AdminService} from "./admin.service";
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild([
-      { path: 'admin-dashboard', component: AdminDashboardComponent },
+      { path: 'admin-dashboard', canActivate:[AdminAuthGuardService], component: AdminDashboardComponent },
       { path: 'admin-login', component: AdminLoginComponent },
       { path: 'admin-register', component: AdminRegisterComponent },
-      { path: 'admin-logout', component: AdminLogoutComponent }
+      { path: 'admin-logout', canActivate:[AdminAuthGuardService], component: AdminLogoutComponent }
     ])
   ],
   providers: [

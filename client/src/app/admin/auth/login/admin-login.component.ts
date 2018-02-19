@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthService} from "../../../common/auth.service";
+import {ToastrService} from "../../../common/toastr.service";
 
 @Component({
   templateUrl: './admin-login.component.html',
@@ -21,14 +22,24 @@ export class AdminLoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private router: Router,
-              private authService: AuthService) {}
+              private authService: AuthService,
+              private toastrService: ToastrService) {}
 
   ngOnInit() {}
 
   loginAdmin(formData) {
     console.log(formData);
     this.authService.adminLogin(formData).subscribe((data) => {
-      console.log(data);
+      if (data.success) {
+        this.toastrService.success('Successfully logged in as admin.');
+        this.router.navigate(['admin-dashboard']);
+      } else {
+        if (data.message) {
+          this.toastrService.warning(data.message);
+        } else {
+          this.toastrService.error('Error in logged in as Admin');
+        }
+      }
     });
   }
 }

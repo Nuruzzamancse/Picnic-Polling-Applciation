@@ -15,7 +15,8 @@ import {StudentModule} from "./student/student.module";
 import {AdminModule} from "./admin/admin.module";
 import {ToastrService} from "./common/toastr.service";
 import {AuthService} from "./common/auth.service";
-import {AuthGuardService} from "./common/auth-guard.service";
+import {StudentAuthGuardService} from "./common/student-auth-guard.service";
+import {AdminAuthGuardService} from "./common/admin-auth-guard.service";
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 
@@ -41,7 +42,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
   providers: [
     ToastrService,
     AuthService,
-    AuthGuardService
+    StudentAuthGuardService,
+    AdminAuthGuardService
   ],
   bootstrap: [AppComponent]
 })

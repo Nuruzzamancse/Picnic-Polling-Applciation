@@ -21,8 +21,23 @@ export class AuthService {
     return false;
   }
 
+  isAdminLoggedIn(): boolean {
+    try {
+      if (localStorage.getItem('currentAdmin')) {
+        return true;
+      }
+    } catch(e) {
+      return false;
+    }
+    return false;
+  }
+
   studentLogout(): void {
-    localStorage.removeItem('currentItem');
+    localStorage.removeItem('currentStudent');
+  }
+
+  adminLogout(): void {
+    localStorage.removeItem('currentAdmin');
   }
 
   studentLogin(student: any) {

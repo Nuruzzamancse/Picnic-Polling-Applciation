@@ -16,15 +16,25 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="!authService.isStudentLoggedIn()">
-          <a routerLink="login" routerLinkActive="active">Log In</a>
+          <a routerLink="student-login" routerLinkActive="active">Student Log In</a>
+        </li>
+        <li *ngIf="!authService.isAdminLoggedIn()">
+          <a routerLink="admin-login" routerLinkActive="active">Admin Log In</a>
         </li>
         <li>
           <ul class="menu">
             <li *ngIf="authService.isStudentLoggedIn()">
-              Welcome Name
+              Welcome Student
               <ul>
-                <li routerLink="contact">Dashboard</li>
-                <li routerLink="logout">Logout</li>
+                <li routerLink="student-dashboard">Student Dashboard</li>
+                <li routerLink="student-logout">Student Logout</li>
+              </ul>
+            </li>
+            <li *ngIf="authService.isAdminLoggedIn()">
+              Welcome Admin
+              <ul>
+                <li routerLink="admin-dashboard">Admin Dashboard</li>
+                <li routerLink="admin-logout">Admin Logout</li>
               </ul>
             </li>
           </ul>
