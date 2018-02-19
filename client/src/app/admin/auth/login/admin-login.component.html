@@ -7,6 +7,7 @@
     <div class="text-danger" *ngIf="adminLoginForm.get('adminEmail').dirty && adminLoginForm.get('adminEmail').invalid">
       Please enter email
     </div>
+    <br>
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" class="form-control" [formControl]="adminPassword" placeholder="Password">
     <div class="text-danger" *ngIf="adminLoginForm.get('adminPassword').dirty && adminLoginForm.get('adminPassword').invalid">

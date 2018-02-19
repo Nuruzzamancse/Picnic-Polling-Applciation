@@ -39,6 +39,20 @@ export class AuthService {
       .catch(this.handleError);
   }
 
+  adminLogin(admin: any) {
+    const headers = new Headers({'Content-Type': 'application/json'});
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.post(`http://localhost:8080/admin-auth/login`, JSON.stringify(admin), options)
+      .map((response: Response) => {
+        if (response.json().success) {
+          localStorage.setItem('currentAdmin', response.json().data);
+        }
+        return response.json();
+      })
+      .catch(this.handleError);
+  }
+
   private handleError(error?: Response) {
     if (error) {
       console.log('Error in Contact Service: ' + error);
