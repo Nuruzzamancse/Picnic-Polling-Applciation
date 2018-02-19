@@ -6,6 +6,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 import {Place} from "../place/place";
+import {Student} from "../student/student";
 
 @Injectable()
 export class AdminService {
@@ -57,6 +58,39 @@ export class AdminService {
     const options = new RequestOptions({ headers: headers });
 
     return this.http.delete(`http://localhost:8080/place/${place._id}`, options)
+      .map((response: Response) => response.json())
+      .catch(this.handleError);
+  }
+
+  getStudents() {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', `${this.jwtToken}`);
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.get(`http://localhost:8080/student`, options)
+      .map((response: Response) => response.json())
+      .catch(this.handleError);
+  }
+
+  updateStudent(student: Student) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', `${this.jwtToken}`);
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.patch(`http://localhost:8080/student/${student._id}`, JSON.stringify(student), options)
+      .map((response: Response) => response.json())
+      .catch(this.handleError);
+  }
+
+  deleteStudent(student: Student) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', `${this.jwtToken}`);
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.delete(`http://localhost:8080/student/${student._id}`, options)
       .map((response: Response) => response.json())
       .catch(this.handleError);
   }

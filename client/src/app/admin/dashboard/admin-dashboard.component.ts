@@ -25,14 +25,14 @@ export class AdminDashboardComponent implements OnInit {
   newPlaceDescription: string;
 
   currentPlace: Place;
-  currentPlaceName: string;
-  currentPlaceDescription: string;
+  currentStudent: Student;
 
   constructor(private adminService: AdminService,
               private toastrService: ToastrService) {}
   ngOnInit() {
 
     this.currentPlace = new Place();
+    this.currentStudent = new Student();
 
     this.student = new Student();
     this.student.studentName = 'student 01 name';
@@ -44,6 +44,7 @@ export class AdminDashboardComponent implements OnInit {
     for (let index=0; index<10; index++) this.students.push(this.student);
 
     this.getAllPlaces();
+    this.getAllStudents();
   }
 
   getAllPlaces() {
@@ -82,11 +83,9 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   onClickUpdatePlace() {
-    console.log('Update Place');
-    console.log(this.currentPlace);
     this.adminService.updatePlace(this.currentPlace).subscribe((data) => {
       if (data.success) {
-        this.toastrService.success('Successfully created the place.');
+        this.toastrService.success('Successfully updated the place.');
       } else {
         if (data.message) {
           this.toastrService.warning(data.message);
@@ -97,7 +96,7 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
-  onClickDeleetPlace() {
+  onClickDeletePlace() {
     this.adminService.deletePlace(this.currentPlace).subscribe((data) => {
       if (data.success) {
         this.places = this.places.filter(place => place._id !=  this.currentPlace._id);
@@ -111,4 +110,69 @@ export class AdminDashboardComponent implements OnInit {
       }
     });
   }
+
+  getAllStudents() {
+    this.adminService.getStudents().subscribe((data) => {
+      console.log(data);
+      if (data.success) {
+        this.students = data.data;
+      } else {
+        if (data.message) {
+          this.toastrService.warning(data.message);
+        } else {
+          this.toastrService.error('Error in fetching Students information.');
+        }
+      }
+    });
+  }
+
+  onClickStudentTable(student: Student) {
+    this.currentStudent = student;
+  }
+
+  onClickUpdateStudent() {
+
+    this.adminService.updateStudent(this.currentStudent).subscribe((data) => {
+      if (data.success) {
+        this.toastrService.success('Successfully updated the student.');
+      } else {
+        if (data.message) {
+          this.toastrService.warning(data.message);
+        } else {
+          this.toastrService.error('Error in updating the student.');
+        }
+      }
+    });
+  }
+
+  onClickChangeStudentApproval() {
+    this.currentStudent.isApproved = !this.currentStudent.isApproved;
+    this.adminService.updateStudent(this.currentStudent).subscribe((data) => {
+      if (data.success) {
+        this.toastrService.success('Successfully change the student approval status.');
+      } else {
+        if (data.message) {
+          this.toastrService.warning(data.message);
+        } else {
+          this.toastrService.error('Error in Approving the student.');
+        }
+      }
+    });
+  }
+
+  onClickDeleteStudent() {
+    this.adminService.deleteStudent(this.currentStudent).subscribe((data) => {
+      if (data.success) {
+        this.students = this.students.filter(student => student._id !=  this.currentStudent._id);
+        this.toastrService.success('Successfully removed the Student.');
+      } else {
+        if (data.message) {
+          this.toastrService.warning(data.message);
+        } else {
+          this.toastrService.error('Error in deleting the student.');
+        }
+      }
+    });
+  }
+
 }

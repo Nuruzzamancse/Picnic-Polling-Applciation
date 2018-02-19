@@ -7,22 +7,26 @@
     <div class="col-sm-8 text-center">
       <h2>Student List</h2>
       <div>
-        <div class="table table-striped">
+        <div class="table table-striped table-hover">
           <thead>
             <tr>
               <th>Name</th>
               <th>Roll</th>
               <th>Vote Available</th>
-              <th>Approval Status</th>
+              <th>Approval</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let student of students">
-              <td>{{student.studentName}}</td>
-              <td>{{student.studentRoll}}</td>
-              <td>{{student.isVoteAvailable}}</td>
-              <td>{{student.isApproved}}</td>
-            </tr>
+            <ng-container *ngFor="let student of students">
+                <tr (click)="onClickStudentTable(student)" data-toggle="modal" data-target="#selectStudentModal">
+                  <td>{{student.studentName}}</td>
+                  <td>{{student.studentRoll}}</td>
+                  <td *ngIf="student.isVoteAvailable">Yes</td>
+                  <td *ngIf="!student.isVoteAvailable">No</td>
+                  <td *ngIf="student.isApproved"><span class="label label-primary">Approved</span></td>
+                  <td *ngIf="!student.isApproved"><span class="label label-danger">Not Approved</span></td>
+                </tr>
+            </ng-container>
           </tbody>
         </div>
       </div>
@@ -55,10 +59,9 @@
   </div>
   <!--end of both table row section-->
 
-  <!--start of student select modal section-->
-  <!--end of student select modal section-->
 
-  <!--start of place select modal-->
+
+  <!--start of select place modal-->
   <div id="selectPlaceModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-sm">
       <!-- Modal content-->
@@ -80,7 +83,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="onClickUpdatePlace()">Update</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="onClickDeleetPlace()">Delete</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="onClickDeletePlace()">Delete</button>
         </div>
       </div>
     </div>
@@ -117,9 +120,39 @@
   </div>
   <!--end of create place modal-->
 
-
-
-  <!--start of create place modal section-->
-  <!--end of create place modal section-->
+  <!--start of select student modal section-->
+  <div id="selectStudentModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-md">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title" id="selectStudentModalLabel">Selected Student</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="selectStudentName" class="control-label">Student Name</label>
+            <input type="text" class="form-control" id="selectStudentName" placeholder="Student Name" [(ngModel)]="currentStudent.studentName">
+          </div>
+          <div class="form-group">
+            <label for="selectStudentRoll" class="control-label">Student Email</label>
+            <input type="text" class="form-control" id="selectStudentRoll" placeholder="Student Roll" [(ngModel)]="currentStudent.studentEmail">
+          </div>
+          <div class="form-group">
+            <label for="selectStudentEmail" class="control-label">Student Roll</label>
+            <input type="text" class="form-control" id="selectStudentEmail" placeholder="Student Email" [(ngModel)]="currentStudent.studentRoll">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="onClickChangeStudentApproval()" *ngIf="!currentStudent.isApproved" >Approve</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="onClickChangeStudentApproval()" *ngIf="currentStudent.isApproved">Remove Approval</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="onClickUpdateStudent()">Update</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="onClickDeleteStudent()">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--end of select student modal section-->
 
 </div>
