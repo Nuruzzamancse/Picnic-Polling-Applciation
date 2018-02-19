@@ -5,6 +5,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
+import {Place} from "../place/place";
 
 @Injectable()
 export class AdminService {
@@ -23,6 +24,17 @@ export class AdminService {
     const options = new RequestOptions({ headers: headers });
 
     return this.http.get(`http://localhost:8080/place`, options)
+      .map((response: Response) => response.json())
+      .catch(this.handleError);
+  }
+
+  createPlace(place: Place) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', `${this.jwtToken}`);
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.post(`http://localhost:8080/place`, JSON.stringify(place), options)
       .map((response: Response) => response.json())
       .catch(this.handleError);
   }

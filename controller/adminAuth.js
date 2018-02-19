@@ -21,6 +21,7 @@ var adminLogin = (req, res, next) => {
 };
 
 var adminAuthenticate = (req, res, next) => {
+
     var token = req.body.token || req.query.token || req.headers['authorization'];
     if (token) {
         jwt.verify(token, config.secret, (err, decoded) => {

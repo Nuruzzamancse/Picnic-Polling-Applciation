@@ -1,4 +1,4 @@
-<div class="pagecontainer">
+<div class="container container-fluid pagecontainer">
 
   <!--start of both table row section-->
   <div class="row">
@@ -32,6 +32,7 @@
     <!--start of col-4 section-->
     <div class="col-sm-4 text-center">
       <h2>Place List</h2>
+      <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#createPlaceModal">Create Place</button>
       <div>
         <div class="table table-striped">
           <thead>
@@ -41,7 +42,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let palce of places">
+          <tr *ngFor="let place of places" data-toggle="modal" data-target="#selectPlaceModal" (click)="onClickPlaceTable(place)">
             <td>{{place.placeName}}</td>
             <td>{{place.placeVotes}}</td>
           </tr>
@@ -58,7 +59,65 @@
   <!--end of student select modal section-->
 
   <!--start of place select modal-->
+  <div id="selectPlaceModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title" id="selectPlaceModalLabel">Create Place</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="selectPlaceName" class="control-label">Place Name</label>
+            <input type="text" class="form-control" id="selectPlaceName" placeholder="Place Name" [(ngModel)]="currentPlace.placeName">
+          </div>
+          <div class="form-group">
+            <label for="selectPlaceDescription" class="control-label">Place Description</label>
+            <input type="text" class="form-control" id="selectPlaceDescription" placeholder="Place Description" [(ngModel)]="currentPlace.placeDescription">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="onClickUpdatePlace()">Update</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="onClickDeleetPlace()">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!--end of place select modal-->
+
+
+
+  <!--start of create place modal-->
+  <div id="createPlaceModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title" id="createModalLabel">Create Place</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="placeName" class="control-label">Place Name</label>
+            <input type="text" class="form-control" id="placeName" placeholder="Place Name" [(ngModel)]="newPlaceName">
+          </div>
+          <div class="form-group">
+            <label for="placeDescription" class="control-label">Place Description</label>
+            <input type="text" class="form-control" id="PlaceDescription" placeholder="Place Description"  [(ngModel)]="newPlaceDescription">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="onClickCreatePlace()">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--end of create place modal-->
+
+
 
   <!--start of create place modal section-->
   <!--end of create place modal section-->
