@@ -36,7 +36,7 @@ app.use(morgan('dev'));
 
 app.use(cors());
 
-app.use('/place', adminAuthController.adminAuthenticate, placeRoutes);
+app.use('/place', placeRoutes);
 app.use('/admin', adminRoutes);
 app.use('/admin-auth', adminAuthRoutes);
 app.use('/student', studentRoutes);

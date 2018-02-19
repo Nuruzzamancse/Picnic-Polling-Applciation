@@ -17,6 +17,10 @@ import {ToastrService} from "./common/toastr.service";
 import {AuthService} from "./common/auth.service";
 import {StudentAuthGuardService} from "./common/student-auth-guard.service";
 import {AdminAuthGuardService} from "./common/admin-auth-guard.service";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatRadioModule} from '@angular/material/radio';
+import {HomeService} from "./home/home.service";
+
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 
@@ -33,6 +37,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     StudentModule,
     AdminModule,
     FusionChartsModule,
+    BrowserAnimationsModule,
+    MatRadioModule,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -43,7 +49,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     ToastrService,
     AuthService,
     StudentAuthGuardService,
-    AdminAuthGuardService
+    AdminAuthGuardService,
+    HomeService
   ],
   bootstrap: [AppComponent]
 })

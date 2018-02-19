@@ -47,7 +47,7 @@ export class AuthService {
     return this.http.post(`http://localhost:8080/student-auth/login`, JSON.stringify(student), options)
       .map((response: Response) => {
         if (response.json().success) {
-          localStorage.setItem('currentStudent', response.json().data);
+          localStorage.setItem('currentStudent', JSON.stringify(response.json()));
         }
         return response.json();
       })

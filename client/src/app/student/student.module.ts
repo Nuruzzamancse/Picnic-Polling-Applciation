@@ -11,6 +11,7 @@ import {ToastrService} from "../common/toastr.service";
 import {AuthService} from "../common/auth.service";
 import {StudentAuthGuardService} from "../common/student-auth-guard.service";
 import {AdminAuthGuardService} from "../common/admin-auth-guard.service";
+import {MatRadioModule} from "@angular/material";
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {AdminAuthGuardService} from "../common/admin-auth-guard.service";
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    MatRadioModule,
     RouterModule.forChild([
       { path: 'student-dashboard', canActivate:[ StudentAuthGuardService ], component: StudentDashboardComponent },
       { path: 'student-login', component: StudentLoginComponent },

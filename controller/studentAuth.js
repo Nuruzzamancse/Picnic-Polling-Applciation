@@ -21,6 +21,7 @@ var studentLogin = (req, res, next) => {
 };
 
 var studentAuthenticate = (req, res, next) => {
+    console.log('Student Auth');
     var token = req.body.token || req.query.token || req.headers['authorization'];
     if (token) {
         jwt.verify(token, config.secret, (err, decoded) => {
