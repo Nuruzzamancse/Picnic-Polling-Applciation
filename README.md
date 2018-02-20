@@ -30,21 +30,22 @@ ng serve
 ```
 
 NOW BROWSER VIEW AVAILABLE
-08. Go to a browser(chrome/firefox) and enter address: 'localhost:4200'
-09. Create several user, in my case I will create 5 students.
-	5 students hints
-		1101 - 11111
-		1102 - 22222
-		1103 - 33333
-		1104 - 44444
-		1105 - 55555
-10. An admin already created.
-	mail: a@mail.com
-	password: aaaaa
-11. Go to admin dashboard and approve the students to vote for place
-12. Create several places for picnic location.
-13. go to the student login and vote for places
-14. Home section will display the results of the poll.
-15. There's a bug on add number. We will fixed asap.
 
-16. The bug is fixed.
+
+01. Go to a browser(chrome/firefox) and enter address: 'localhost:4200'  
+02. Create several user, in my case I will create 5 students.  
+	5 students hints  
+		1101 - 11111  
+		1102 - 22222  
+		1103 - 33333  
+		1104 - 44444  
+		1105 - 55555  
+03. An admin already created.  
+	mail: a@mail.com  
+	password: aaaaa  
+04. Go to admin dashboard and approve the students to vote for place  
+05. Create several places for picnic location.  
+06. go to the student login and vote for places  
+07. Home section will display the results of the poll.  
+08. There's a bug on add number. We will fixed asap.  
+09. The bug is fixed.    
