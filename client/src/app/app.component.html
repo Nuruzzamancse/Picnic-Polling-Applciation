@@ -16,7 +16,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="!authService.isStudentLoggedIn()">
-          <a routerLink="student-login" routerLinkActive="active">Student Log In</a>
+          <a routerLink="student-login" routerLinkActive="">Student Log In</a>
         </li>
         <li *ngIf="!authService.isAdminLoggedIn()">
           <a routerLink="admin-login" routerLinkActive="active">Admin Log In</a>

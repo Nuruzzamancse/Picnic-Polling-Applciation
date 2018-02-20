@@ -69,7 +69,7 @@ export class StudentDashboardComponent implements OnInit {
         }
       });
 
-      this.votedPlace.placeVotes = this.votedPlace.placeVotes + 1;
+      this.votedPlace.placeVotes = parseInt(this.votedPlace.placeVotes.toString()) + 1;
 
       this.studentService.updatePlace(this.votedPlace).subscribe((data) => {
         if (data.success) {

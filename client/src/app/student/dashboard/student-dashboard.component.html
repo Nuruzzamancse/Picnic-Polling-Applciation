@@ -1,11 +1,15 @@
 <div class="container container-fluid pagecontainer">
   <h1>Welcome to the Student Dashboard</h1>
-  <div *ngIf="currentStudent.isApproved && currentStudent.isVoteAvailable">
-    <mat-radio-group class="example-radio-group" [(ngModel)]="votedPlace">
-      <mat-radio-button class="example-radio-button" *ngFor="let place of places" [value]="place">
-        {{place.placeName}}
-      </mat-radio-button>
-    </mat-radio-group>
-    <button class="btn btn-primary" (click)="onClickVote()">Vote</button>
+  <div *ngIf="currentStudent.isApproved && currentStudent.isVoteAvailable" class="">
+    <div class="row">
+      <mat-radio-group class="example-radio-group" [(ngModel)]="votedPlace">
+        <mat-radio-button class="example-radio-button" *ngFor="let place of places" [value]="place">
+          {{place.placeName}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="row">
+      <button class="btn btn-primary" (click)="onClickVote()">Vote</button>
+    </div>
   </div>
 </div>

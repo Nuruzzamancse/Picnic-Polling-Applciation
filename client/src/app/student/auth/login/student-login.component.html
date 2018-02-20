@@ -33,7 +33,10 @@
     <!--end password input group-->
     <br>
     <button class="btn btn-primary text-center" id="submit" [disabled]="studentLoginForm.invalid">Sign in</button>
-
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-xs-6"></div>
+      <div class="col-md-6 col-sm-6 col-xs-6" style="text-align: right"><a [routerLink]="['/student-register']">Register</a></div>
+    </div>
   </form>
   <!--end student login form-->
 </div>
